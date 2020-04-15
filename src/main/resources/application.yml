@@ -1,0 +1,6 @@
+
+spring:
+  redis:
+    host: 118.31.106.204
+    password: root123
+    database: 0
