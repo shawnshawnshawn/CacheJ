@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.aio</groupId>
-    <artifactId>cache</artifactId>
+    <artifactId>cacheJ</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>cache</name>
+    <name>cacheJ</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

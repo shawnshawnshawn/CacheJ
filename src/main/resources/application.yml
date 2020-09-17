@@ -1,6 +1,6 @@
 
 spring:
   redis:
-    host: 118.31.106.204
+    host: localhost
     password: root123
     database: 0
