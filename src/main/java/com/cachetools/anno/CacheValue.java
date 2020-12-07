@@ -1,15 +1,17 @@
-package com.aio.cacheJ.anno;
+package com.cachetools.anno;
+
 
 import java.lang.annotation.*;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author <a href="jiangliuer_shawn@outlook.com>zhangyingdong</a>
- * @date 2020/4/13 下午1:29
+ * cache obj with this key. you can custom Expire time. Key support SPEL expression.
+ * @author 白也
+ * @date 2020/12/7 下午 6:47
  */
 @Documented
-@Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
 public @interface CacheValue {
 
     /**
@@ -17,7 +19,11 @@ public @interface CacheValue {
      */
     String key() default "";
 
+    String name() default "";
+
     long expire() default 300L;
 
     TimeUnit timeUnit() default TimeUnit.SECONDS;
+
+
 }
