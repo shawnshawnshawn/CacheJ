@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.cachetools.redis.RedisCacheConfiguration,\
+  com.cachetools.interceptor.CacheJPointCutAdvisor

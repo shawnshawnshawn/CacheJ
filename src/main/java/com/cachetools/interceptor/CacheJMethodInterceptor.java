@@ -14,16 +14,20 @@ import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class CacheJMethodInterceptor  implements MethodInterceptor, Serializable {
 
-    private static final Logger log = LoggerFactory.getLogger(CacheJMethodInterceptor.class);
+    private static final String logClazz = "c.c.i.CacheJMethodInterceptor:CACHEJ";
+
+    private static final Logger log = LoggerFactory.getLogger(logClazz);
 
     @Resource
     private StringRedisTemplate stringRedisTemplate;
@@ -69,7 +73,15 @@ public class CacheJMethodInterceptor  implements MethodInterceptor, Serializable
             }
             //缓存为空,执行方法并缓存方法执行结果
             if (obj == null) {
-                Object invoke = method.invoke(methodInvocation.getThis(), methodInvocation.getArguments());
+                Object invoke;
+                try {
+                    invoke  = method.invoke(methodInvocation.getThis(), methodInvocation.getArguments());
+                } catch (InvocationTargetException e) {
+                    throw e.getCause();
+                }
+                if (Objects.isNull(invoke)) {
+                    return methodInvocation.proceed();
+                }
                 stringRedisTemplate.opsForValue().set(realKey, JSON.toJSONString(invoke), expire, timeUnit);
                 return invoke;
             } else {

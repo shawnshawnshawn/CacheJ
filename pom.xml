@@ -19,22 +19,39 @@
             </plugin>
         </plugins>
     </build>
+    <properties>
+        <spring-boot.version>2.2.1.RELEASE</spring-boot.version>
+        <spring-apo.version>5.2.8.RELEASE</spring-apo.version>
+        <fastjson.version>1.2.66</fastjson.version>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
-            <version>5.2.8.RELEASE</version>
+            <version>${spring-apo.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-redis</artifactId>
-            <version>2.2.6.RELEASE</version>
         </dependency>
         <!-- fast-json -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.66</version>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
     </dependencies>
 

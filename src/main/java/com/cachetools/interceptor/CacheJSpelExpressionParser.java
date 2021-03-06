@@ -33,6 +33,10 @@ public class CacheJSpelExpressionParser {
         if (parameterNames == null) {
             return expression;
         }
+        // 无参缓存key,直接返回
+        if (!expression.contains("#")) {
+            return expression;
+        }
         //由于java不允许有匿名参数,所以如果参数名多于参数值,则必为非法
         if (parameterNames.length > args.length) {
             logger.error("参数值的长度少于参数名长度, 方法:{}, 参数名长度: {},参数值长度:{}", method, parameterNames.length, args.length);
