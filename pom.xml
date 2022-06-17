@@ -22,7 +22,7 @@
     <properties>
         <spring-boot.version>2.2.1.RELEASE</spring-boot.version>
         <spring-apo.version>5.2.8.RELEASE</spring-apo.version>
-        <fastjson.version>1.2.66</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
     </properties>
     <dependencies>
         <dependency>
