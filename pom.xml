@@ -20,7 +20,7 @@
         </plugins>
     </build>
     <properties>
-        <spring-boot.version>2.2.1.RELEASE</spring-boot.version>
+        <spring-boot.version>2.5.15</spring-boot.version>
         <spring-apo.version>5.2.8.RELEASE</spring-apo.version>
         <fastjson.version>1.2.66</fastjson.version>
     </properties>
